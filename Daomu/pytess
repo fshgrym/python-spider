@@ -1,0 +1,29 @@
+FileNotFoundError: [WinError 2] 系统找不到指定的文件。
+解决方法：
+打开文件 pytesseract.py，找到如下代码，将tesseract_cmd的值修改为全路径，在此使用就不会报错了。
+
+# CHANGE THIS IF TESSERACT IS NOT IN YOUR PATH, OR IS NAMED DIFFERENTLY
+# tesseract_cmd = 'tesseract'
+tesseract_cmd = 'C:/Program Files (x86)/Tesseract-OCR/tesseract.exe'
+
+注意，如果出现error: leptonica not found，需要下载安装leptonica
+http://www.leptonica.org/download.html
+
+pytesseract.pytesseract.TesseractError: (1, 'Error opening data file \\Tesseract-OCR\\tessdata/eng.traineddata')
+解决方法：
+将tessdata目录的上级目录所在路径(默认为tesseract-ocr安装目录)添加至TESSDATA_PREFIX环境变量中
+
+例如: C:\Program Files (x86)\Tesseract-OCR\
+
+Please make sure the TESSDATA_PREFIX environment variable is set to the parent directory of your "tessdata" directory.
+
+
+方法2:  在.py文件配置中指定tessdata-dir
+
+tessdata_dir_config = '--tessdata-dir "D:\\Tesseract-OCR\\tessdata\\"'
+# tessdata_dir_config = '--tessdata-dir "'C:\\Program Files (x86)\\Tesseract-OCR\\tessdata"'
+pytesseract.image_to_string(image, config=tessdata_dir_config)
+
+ValueError: No closing quotation
+pip install quotation
+
