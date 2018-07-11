@@ -84,5 +84,5 @@ def get_captcha():
         captcha = input("please input the captcha\n>")
 
 if __name__ == '__main__':
-    zhihu_login('18312743371','ai1961360502')
+    zhihu_login('183127*33*1','****6*3*05*2')
     # get_index()
